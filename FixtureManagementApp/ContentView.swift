@@ -91,7 +91,8 @@ struct FixtureList: View {
                 }
             }.onDelete(perform: { indexSet in
                 // 備品削除
-                // DbManager().deleteFixture(id: 1)
+                DbManager().deleteFixture(id: self.fixturesList[indexSet.first!].id)
+                self.fixturesList.remove(atOffsets: indexSet)
             })
         }
         .listStyle(PlainListStyle())
