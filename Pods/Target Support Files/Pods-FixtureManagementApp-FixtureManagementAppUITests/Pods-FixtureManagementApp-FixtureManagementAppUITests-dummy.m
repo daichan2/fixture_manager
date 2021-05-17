@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_FixtureManagementApp_FixtureManagementAppUITests : NSObject
+@end
+@implementation PodsDummy_Pods_FixtureManagementApp_FixtureManagementAppUITests
+@end

@@ -1,0 +1,6 @@
+framework module Pods_FixtureManagementApp {
+  umbrella header "Pods-FixtureManagementApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -3,16 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2672291F2E957744AE069E79 /* Pods_FixtureManagementApp_FixtureManagementAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2B2D1D8B1F9347668C07183 /* Pods_FixtureManagementApp_FixtureManagementAppUITests.framework */; };
+		8FCF94D0C137C11C5E6743C5 /* Pods_FixtureManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAD612696C03E7CA138AF6A /* Pods_FixtureManagementApp.framework */; };
+		C21F0D90C5DB5627C7F9811A /* Pods_FixtureManagementAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6C8F1D433056542C263CE1 /* Pods_FixtureManagementAppTests.framework */; };
 		EC701C662648F6F9006E8989 /* FixtureManagementAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC701C652648F6F9006E8989 /* FixtureManagementAppApp.swift */; };
 		EC701C682648F6F9006E8989 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC701C672648F6F9006E8989 /* ContentView.swift */; };
 		EC701C6A2648F6FB006E8989 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC701C692648F6FB006E8989 /* Assets.xcassets */; };
 		EC701C6D2648F6FB006E8989 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC701C6C2648F6FB006E8989 /* Preview Assets.xcassets */; };
 		EC701C782648F6FC006E8989 /* FixtureManagementAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC701C772648F6FC006E8989 /* FixtureManagementAppTests.swift */; };
 		EC701C832648F6FC006E8989 /* FixtureManagementAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC701C822648F6FC006E8989 /* FixtureManagementAppUITests.swift */; };
+		EC701C9B264906FB006E8989 /* DbManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC701C9A264906FB006E8989 /* DbManager.swift */; };
+		EC7DA452264BA37F00FDA6E2 /* EditFixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7DA451264BA37F00FDA6E2 /* EditFixtureView.swift */; };
+		EC7DA457264BBFD800FDA6E2 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7DA456264BBFD800FDA6E2 /* CategoryModel.swift */; };
+		EC7DA45C264BCD8000FDA6E2 /* UnitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7DA45B264BCD8000FDA6E2 /* UnitModel.swift */; };
+		ECB07A57264DFE2D00D1E4DA /* FixtureModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB07A56264DFE2D00D1E4DA /* FixtureModel.swift */; };
+		ECDDC2CD264A6D2A00CF4310 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDC2CC264A6D2A00CF4310 /* Common.swift */; };
+		ECDDC2D2264A6ECC00CF4310 /* AddFixtureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDDC2D1264A6ECC00CF4310 /* AddFixtureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AAD612696C03E7CA138AF6A /* Pods_FixtureManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FixtureManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C6C8F1D433056542C263CE1 /* Pods_FixtureManagementAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FixtureManagementAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48806D8AA14C0EECB1B430CE /* Pods-FixtureManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FixtureManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-FixtureManagementApp/Pods-FixtureManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
+		4FB22126A81AC22FF458A0F5 /* Pods-FixtureManagementApp-FixtureManagementAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FixtureManagementApp-FixtureManagementAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-FixtureManagementApp-FixtureManagementAppUITests/Pods-FixtureManagementApp-FixtureManagementAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6577A91AB056A8DA2BE1470 /* Pods-FixtureManagementApp-FixtureManagementAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FixtureManagementApp-FixtureManagementAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FixtureManagementApp-FixtureManagementAppUITests/Pods-FixtureManagementApp-FixtureManagementAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E2B2D1D8B1F9347668C07183 /* Pods_FixtureManagementApp_FixtureManagementAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FixtureManagementApp_FixtureManagementAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC701C622648F6F9006E8989 /* FixtureManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FixtureManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC701C652648F6F9006E8989 /* FixtureManagementAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureManagementAppApp.swift; sourceTree = "<group>"; };
 		EC701C672648F6F9006E8989 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +61,16 @@
 		EC701C7E2648F6FC006E8989 /* FixtureManagementAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FixtureManagementAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC701C822648F6FC006E8989 /* FixtureManagementAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureManagementAppUITests.swift; sourceTree = "<group>"; };
 		EC701C842648F6FC006E8989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC701C9A264906FB006E8989 /* DbManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbManager.swift; sourceTree = "<group>"; };
+		EC7DA451264BA37F00FDA6E2 /* EditFixtureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFixtureView.swift; sourceTree = "<group>"; };
+		EC7DA456264BBFD800FDA6E2 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		EC7DA45B264BCD8000FDA6E2 /* UnitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitModel.swift; sourceTree = "<group>"; };
+		ECB07A56264DFE2D00D1E4DA /* FixtureModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixtureModel.swift; sourceTree = "<group>"; };
+		ECDDC2CC264A6D2A00CF4310 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		ECDDC2D1264A6ECC00CF4310 /* AddFixtureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFixtureView.swift; sourceTree = "<group>"; };
+		F62B4DCADBEF8B25B976B38C /* Pods-FixtureManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FixtureManagementApp.release.xcconfig"; path = "Target Support Files/Pods-FixtureManagementApp/Pods-FixtureManagementApp.release.xcconfig"; sourceTree = "<group>"; };
+		FB1F0B7F9F51085BDBD9AD5C /* Pods-FixtureManagementAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FixtureManagementAppTests.release.xcconfig"; path = "Target Support Files/Pods-FixtureManagementAppTests/Pods-FixtureManagementAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		FD4D192DD158B8F7784858DD /* Pods-FixtureManagementAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FixtureManagementAppTests.debug.xcconfig"; path = "Target Support Files/Pods-FixtureManagementAppTests/Pods-FixtureManagementAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCF94D0C137C11C5E6743C5 /* Pods_FixtureManagementApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C21F0D90C5DB5627C7F9811A /* Pods_FixtureManagementAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +94,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2672291F2E957744AE069E79 /* Pods_FixtureManagementApp_FixtureManagementAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D252200D39F20E9CB473AC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48806D8AA14C0EECB1B430CE /* Pods-FixtureManagementApp.debug.xcconfig */,
+				F62B4DCADBEF8B25B976B38C /* Pods-FixtureManagementApp.release.xcconfig */,
+				4FB22126A81AC22FF458A0F5 /* Pods-FixtureManagementApp-FixtureManagementAppUITests.debug.xcconfig */,
+				B6577A91AB056A8DA2BE1470 /* Pods-FixtureManagementApp-FixtureManagementAppUITests.release.xcconfig */,
+				FD4D192DD158B8F7784858DD /* Pods-FixtureManagementAppTests.debug.xcconfig */,
+				FB1F0B7F9F51085BDBD9AD5C /* Pods-FixtureManagementAppTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BF4839F4A4A4A5ED2F8491C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0AAD612696C03E7CA138AF6A /* Pods_FixtureManagementApp.framework */,
+				E2B2D1D8B1F9347668C07183 /* Pods_FixtureManagementApp_FixtureManagementAppUITests.framework */,
+				1C6C8F1D433056542C263CE1 /* Pods_FixtureManagementAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC701C592648F6F9006E8989 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +131,8 @@
 				EC701C762648F6FC006E8989 /* FixtureManagementAppTests */,
 				EC701C812648F6FC006E8989 /* FixtureManagementAppUITests */,
 				EC701C632648F6F9006E8989 /* Products */,
+				1D252200D39F20E9CB473AC2 /* Pods */,
+				BF4839F4A4A4A5ED2F8491C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +152,15 @@
 				EC701C652648F6F9006E8989 /* FixtureManagementAppApp.swift */,
 				EC701C672648F6F9006E8989 /* ContentView.swift */,
 				EC701C692648F6FB006E8989 /* Assets.xcassets */,
+				ECDDC2D1264A6ECC00CF4310 /* AddFixtureView.swift */,
 				EC701C6E2648F6FB006E8989 /* Info.plist */,
 				EC701C6B2648F6FB006E8989 /* Preview Content */,
+				EC701C9A264906FB006E8989 /* DbManager.swift */,
+				ECDDC2CC264A6D2A00CF4310 /* Common.swift */,
+				EC7DA451264BA37F00FDA6E2 /* EditFixtureView.swift */,
+				EC7DA456264BBFD800FDA6E2 /* CategoryModel.swift */,
+				EC7DA45B264BCD8000FDA6E2 /* UnitModel.swift */,
+				ECB07A56264DFE2D00D1E4DA /* FixtureModel.swift */,
 			);
 			path = FixtureManagementApp;
 			sourceTree = "<group>";
@@ -137,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC701C872648F6FC006E8989 /* Build configuration list for PBXNativeTarget "FixtureManagementApp" */;
 			buildPhases = (
+				7DEFFAAEE2DB62873952D1C2 /* [CP] Check Pods Manifest.lock */,
 				EC701C5E2648F6F9006E8989 /* Sources */,
 				EC701C5F2648F6F9006E8989 /* Frameworks */,
 				EC701C602648F6F9006E8989 /* Resources */,
+				28FC7A45E79A71CA113709C8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,6 +217,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC701C8A2648F6FC006E8989 /* Build configuration list for PBXNativeTarget "FixtureManagementAppTests" */;
 			buildPhases = (
+				1EAFC38FCA60A62DE2D5B66F /* [CP] Check Pods Manifest.lock */,
 				EC701C6F2648F6FC006E8989 /* Sources */,
 				EC701C702648F6FC006E8989 /* Frameworks */,
 				EC701C712648F6FC006E8989 /* Resources */,
@@ -172,9 +236,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC701C8D2648F6FC006E8989 /* Build configuration list for PBXNativeTarget "FixtureManagementAppUITests" */;
 			buildPhases = (
+				B996FA6409011C501D8E593E /* [CP] Check Pods Manifest.lock */,
 				EC701C7A2648F6FC006E8989 /* Sources */,
 				EC701C7B2648F6FC006E8989 /* Frameworks */,
 				EC701C7C2648F6FC006E8989 /* Resources */,
+				811B11A9F332BFF61A310D14 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -254,12 +320,122 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1EAFC38FCA60A62DE2D5B66F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FixtureManagementAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28FC7A45E79A71CA113709C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FixtureManagementApp/Pods-FixtureManagementApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FixtureManagementApp/Pods-FixtureManagementApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FixtureManagementApp/Pods-FixtureManagementApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DEFFAAEE2DB62873952D1C2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FixtureManagementApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		811B11A9F332BFF61A310D14 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FixtureManagementApp-FixtureManagementAppUITests/Pods-FixtureManagementApp-FixtureManagementAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FixtureManagementApp-FixtureManagementAppUITests/Pods-FixtureManagementApp-FixtureManagementAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FixtureManagementApp-FixtureManagementAppUITests/Pods-FixtureManagementApp-FixtureManagementAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B996FA6409011C501D8E593E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FixtureManagementApp-FixtureManagementAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EC701C5E2648F6F9006E8989 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB07A57264DFE2D00D1E4DA /* FixtureModel.swift in Sources */,
+				EC7DA452264BA37F00FDA6E2 /* EditFixtureView.swift in Sources */,
+				ECDDC2CD264A6D2A00CF4310 /* Common.swift in Sources */,
 				EC701C682648F6F9006E8989 /* ContentView.swift in Sources */,
+				EC7DA45C264BCD8000FDA6E2 /* UnitModel.swift in Sources */,
+				ECDDC2D2264A6ECC00CF4310 /* AddFixtureView.swift in Sources */,
+				EC7DA457264BBFD800FDA6E2 /* CategoryModel.swift in Sources */,
+				EC701C9B264906FB006E8989 /* DbManager.swift in Sources */,
 				EC701C662648F6F9006E8989 /* FixtureManagementAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,11 +590,13 @@
 		};
 		EC701C882648F6FC006E8989 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48806D8AA14C0EECB1B430CE /* Pods-FixtureManagementApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FixtureManagementApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 989ASC2U8A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = FixtureManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -435,11 +613,13 @@
 		};
 		EC701C892648F6FC006E8989 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F62B4DCADBEF8B25B976B38C /* Pods-FixtureManagementApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"FixtureManagementApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 989ASC2U8A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = FixtureManagementApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -456,6 +636,7 @@
 		};
 		EC701C8B2648F6FC006E8989 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4D192DD158B8F7784858DD /* Pods-FixtureManagementAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -477,6 +658,7 @@
 		};
 		EC701C8C2648F6FC006E8989 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB1F0B7F9F51085BDBD9AD5C /* Pods-FixtureManagementAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -498,6 +680,7 @@
 		};
 		EC701C8E2648F6FC006E8989 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FB22126A81AC22FF458A0F5 /* Pods-FixtureManagementApp-FixtureManagementAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -517,6 +700,7 @@
 		};
 		EC701C8F2648F6FC006E8989 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6577A91AB056A8DA2BE1470 /* Pods-FixtureManagementApp-FixtureManagementAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

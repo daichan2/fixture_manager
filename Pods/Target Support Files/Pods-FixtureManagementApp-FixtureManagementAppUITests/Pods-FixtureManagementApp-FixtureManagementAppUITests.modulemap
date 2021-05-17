@@ -1,0 +1,6 @@
+framework module Pods_FixtureManagementApp_FixtureManagementAppUITests {
+  umbrella header "Pods-FixtureManagementApp-FixtureManagementAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
