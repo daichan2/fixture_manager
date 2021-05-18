@@ -43,6 +43,7 @@ struct EditFixtureView: View {
             HStack {
                 EditImageRow()
             }
+            .padding(.horizontal)
             
             ZStack {
                 CategoryPicker(selection: self.$categoryPickerId, isShowing: self.$isShowingCategoryPicker, cateroryMessage: self.$newCategoryMessage)
@@ -195,17 +196,42 @@ struct EditFixtureQuantityRow: View {
 }
 // 画像行
 struct EditImageRow: View {
+    @State private var image: UIImage?
+    @State private var showCameraView = false
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
     var body: some View {
-        // 画像(文字)
-        Text("画像")
-            .padding(.horizontal)
-        // カメラを起動するボタン
-        Button(action: {
-            print("カメラ起動")
-        }) {
-            Text("+")
-                .foregroundColor(Color.blue)
+        HStack {
+            Text("画像")
+            if image != nil {
+                Image(uiImage: image!)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            } else {
+                Menu {
+                    Button(action: {
+                        self.sourceType = .camera
+                        self.showCameraView.toggle()
+                    }, label: {
+                        Text("カメラを起動")
+                    })
+                    .padding()
+                    
+                    Button(action: {
+                        self.sourceType = .photoLibrary
+                        self.showCameraView.toggle()
+                    }, label: {
+                        Text("ライブラリから画像を選択")
+                    })
+                } label: {
+                    Text("+")
+                }
+                .padding()
+            }
         }
+        .sheet(isPresented: self.$showCameraView, content: {
+            SwiftUIImagePicker(image: self.$image, showCameraView: self.$showCameraView, sourceType: self.$sourceType)
+        })
         Spacer()
     }
 }
