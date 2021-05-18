@@ -157,3 +157,52 @@ struct UnitModalView: View {
         }
     }
 }
+
+// カメラ、ライブラリー機能
+struct SwiftUIImagePicker: UIViewControllerRepresentable {
+    // 画像保存
+    @Binding var image: UIImage?
+    // カメラorライブラリー表示フラグ
+    @Binding var showCameraView: Bool
+    // カメラorライブラリーの選択肢
+    @Binding var sourceType: UIImagePickerController.SourceType
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    // カメラorライブラリーのビュー作成
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let viewController = UIImagePickerController()
+        viewController.delegate = context.coordinator
+        if UIImagePickerController.isSourceTypeAvailable(self.sourceType) {
+            viewController.sourceType = self.sourceType
+        }
+        return viewController
+    }
+    
+    // カメラorライブラリーの表示を検知
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        print("updateUIViewController is called")
+    }
+    
+    // UIImagePickerControllerDelegate:画像関連処理のライブラリー
+    // UINavigationControllerDelegate:ナビゲーションのライブラリー
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: SwiftUIImagePicker
+        init(_ parent: SwiftUIImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let uiImage = info[.originalImage] as? UIImage {
+                self.parent.image = uiImage
+            }
+            self.parent.showCameraView = false
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            self.parent.showCameraView = false
+        }
+    }
+}
