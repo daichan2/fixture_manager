@@ -187,32 +187,32 @@ struct NewImageRow: View {
     var body: some View {
         HStack {
             Text("画像")
-            if image != nil {
-                Image(uiImage: image!)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            } else {
-                Menu {
-                    Button(action: {
-                        self.sourceType = .camera
-                        self.showCameraView.toggle()
-                    }, label: {
-                        Text("カメラを起動")
-                    })
-                    .padding()
-                    
-                    Button(action: {
-                        self.sourceType = .photoLibrary
-                        self.showCameraView.toggle()
-                    }, label: {
-                        Text("ライブラリから画像を選択")
-                    })
-                } label: {
+            Menu {
+                Button(action: {
+                    self.sourceType = .camera
+                    self.showCameraView.toggle()
+                }, label: {
+                    Text("カメラを起動")
+                })
+                .padding()
+                
+                Button(action: {
+                    self.sourceType = .photoLibrary
+                    self.showCameraView.toggle()
+                }, label: {
+                    Text("ライブラリから画像を選択")
+                })
+            } label: {
+                if self.image != nil {
+                    Image(uiImage: self.image!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                } else {
                     Text("+")
                 }
-                .padding()
             }
+            .padding()
         }
         .sheet(isPresented: self.$showCameraView, content: {
             SwiftUIImagePicker(image: self.$image, showCameraView: self.$showCameraView, sourceType: self.$sourceType)
