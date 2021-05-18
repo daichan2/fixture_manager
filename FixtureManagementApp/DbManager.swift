@@ -312,4 +312,26 @@ class DbManager {
             print(error.localizedDescription)
         }
     }
+    
+    // 備品カテゴリー絞り込み
+    public func categorySearchFixtureList(cId: Int64) -> [FixtureModel] {
+        var fixtureModels: [FixtureModel] = []
+        fixtures = fixtures.filter(categoryId == cId).order(fixturesId.desc)
+        do {
+            for fixture in try db.prepare(fixtures) {
+                let fixtureModel: FixtureModel = FixtureModel()
+                fixtureModel.id = fixture[fixturesId]
+                fixtureModel.categoryId = fixture[categoryId]
+                fixtureModel.unitId = fixture[unitId]
+                fixtureModel.name = fixture[fixturesName]
+                fixtureModel.quantity = fixture[fixturesQuantity]
+                fixtureModel.createdAt = fixture[fixturesCreatedAt]
+                fixtureModel.updatedAt = fixture[fixturesUpdatedAt]
+                fixtureModels.append(fixtureModel)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        return fixtureModels
+    }
 }
