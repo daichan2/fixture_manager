@@ -16,17 +16,17 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
+
                 HStack {
                     CategorySearchRow(isShowing: self.$isShowingCategoryPicker, categoryMessage: self.$indexCategoryMessage)
                 }
-                
+
                 ZStack {
-                
+
                     HStack {
                         FixtureList(fixtureList: self.$fixtureList, unitModels: self.$unitModels)
                     }
-                    
+
                     CategorySearchPicker(selection: self.$categoryPickerId, isShowing: self.$isShowingCategoryPicker, cateroryMessage: self.$indexCategoryMessage, fixtureList: self.$fixtureList)
                         .animation(.linear)
                         .offset(y: self.isShowingCategoryPicker ? 0 : UIScreen.main.bounds.height)

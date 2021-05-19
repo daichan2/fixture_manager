@@ -37,6 +37,7 @@ class DbManager {
     private var fixturesQuantity: Expression<Int64>!
     private var fixturesCreatedAt: Expression<String>!
     private var fixturesUpdatedAt: Expression<String>!
+    private var fixturesImage: Expression<String>!
     
     init() {
         
@@ -71,6 +72,7 @@ class DbManager {
             fixturesQuantity = Expression<Int64>("quantity")
             fixturesCreatedAt = Expression<String>("created_at")
             fixturesUpdatedAt = Expression<String>("updated_at")
+            fixturesImage = Expression<String>("image")
             
             // カテゴリーテーブルが存在するかチェック
             if (!UserDefaults.standard.bool(forKey: "is_categories_table_created")) {
@@ -114,6 +116,14 @@ class DbManager {
                 })
                 // 備品テーブルを作成した証拠を残す
                 UserDefaults.standard.set(true, forKey: "is_fixtures_table_created")
+            }
+            
+            // imageカラムが存在するかチェック
+            if (!UserDefaults.standard.bool(forKey: "is_fixtures_table_image_column_created")) {
+                // imageカラムを追加
+                try db.run(fixtures.addColumn(fixturesImage, defaultValue: ""))
+                // imageカラムを作成した証拠を残す
+                UserDefaults.standard.set(true, forKey: "is_fixtures_table_image_column_created")
             }
         } catch {
             // 失敗時に挙動
@@ -241,6 +251,7 @@ class DbManager {
                 fixtureModel.quantity = fixture[fixturesQuantity]
                 fixtureModel.createdAt = fixture[fixturesCreatedAt]
                 fixtureModel.updatedAt = fixture[fixturesUpdatedAt]
+                fixtureModel.image = fixture[fixturesImage]
                 fixtureModels.append(fixtureModel)
             }
         } catch {
@@ -262,6 +273,7 @@ class DbManager {
                 fixtureModel.quantity = fixture[fixturesQuantity]
                 fixtureModel.createdAt = fixture[fixturesCreatedAt]
                 fixtureModel.updatedAt = fixture[fixturesUpdatedAt]
+                fixtureModel.image = fixture[fixturesImage]
             }
         } catch {
             print(error.localizedDescription)
@@ -270,7 +282,7 @@ class DbManager {
     }
     
     // 備品登録処理
-    public func createFixture(cId: Int64, uId: Int64, name: String, quantity: Int64) {
+    public func createFixture(cId: Int64, uId: Int64, name: String, quantity: Int64, image: String) {
         //現在の日付を取得
         let date:Date = Date()
         //日付のフォーマットを指定する。
@@ -279,7 +291,7 @@ class DbManager {
         //日付をStringに変換する
         let sDate = format.string(from: date)
         do {
-            let fixture = fixtures.insert(categoryId <- cId, unitId <- uId, fixturesName <- name, fixturesQuantity <- quantity, fixturesCreatedAt <- sDate, fixturesUpdatedAt <- sDate)
+            let fixture = fixtures.insert(categoryId <- cId, unitId <- uId, fixturesName <- name, fixturesQuantity <- quantity, fixturesCreatedAt <- sDate, fixturesUpdatedAt <- sDate, fixturesImage <- image)
             try db.run(fixture)
         } catch {
             print(error.localizedDescription)
@@ -287,7 +299,7 @@ class DbManager {
     }
     
     // 備品更新処理
-    public func updateFixture(id: Int64, cId: Int64, uId: Int64, name: String, quantity: Int64) {
+    public func updateFixture(id: Int64, cId: Int64, uId: Int64, name: String, quantity: Int64, image: String) {
         //現在の日付を取得
         let date:Date = Date()
         //日付のフォーマットを指定する。
@@ -297,7 +309,7 @@ class DbManager {
         let sDate = format.string(from: date)
         do {
             let fixture = fixtures.filter(fixturesId == id)
-            try db.run(fixture.update(categoryId <- cId, unitId <- uId, fixturesName <- name, fixturesQuantity <- quantity, fixturesUpdatedAt <- sDate))
+            try db.run(fixture.update(categoryId <- cId, unitId <- uId, fixturesName <- name, fixturesQuantity <- quantity, fixturesUpdatedAt <- sDate, fixturesImage <- image))
         } catch {
             print(error.localizedDescription)
         }

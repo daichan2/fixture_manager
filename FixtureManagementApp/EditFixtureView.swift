@@ -23,6 +23,7 @@ struct EditFixtureView: View {
     @State private var categoryPickerId: Int64 = 1
     @State private var unitPickerId: Int64 = 1
     @State private var editFixtureQuantity: String = ""
+    @State private var image: UIImage = UIImage()
     var body: some View {
         VStack {
             
@@ -41,7 +42,7 @@ struct EditFixtureView: View {
             .padding(.horizontal)
             
             HStack {
-                EditImageRow()
+                EditImageRow(image: self.$image)
             }
             .padding(.horizontal)
             
@@ -65,6 +66,7 @@ struct EditFixtureView: View {
             self.categoryPickerId = self.categoryModel.id
             self.unitPickerId = self.unitModel.id
             self.editFixtureQuantity = String(self.fixtureModel.quantity)
+            self.image = ImageConversion().stringToImage(imageString: fixtureModel.image)
         })
         .navigationBarTitle("編集", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
@@ -77,7 +79,7 @@ struct EditFixtureView: View {
             },
             trailing: Button(action: {
                 // 備品更新処理
-                DbManager().updateFixture(id: self.fixtureId, cId: self.categoryPickerId, uId: self.unitPickerId, name: self.fixtureModel.name, quantity: Int64(self.editFixtureQuantity)!)
+                DbManager().updateFixture(id: self.fixtureId, cId: self.categoryPickerId, uId: self.unitPickerId, name: self.fixtureModel.name, quantity: Int64(self.editFixtureQuantity)!, image: ImageConversion().imageToString(image: self.image))
             }) {
                 Text("保存")
                     .foregroundColor(Color.white)
@@ -196,7 +198,7 @@ struct EditFixtureQuantityRow: View {
 }
 // 画像行
 struct EditImageRow: View {
-    @State private var image: UIImage?
+    @Binding var image: UIImage
     @State private var showCameraView = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     var body: some View {
@@ -218,8 +220,8 @@ struct EditImageRow: View {
                     Text("ライブラリから画像を選択")
                 })
             } label: {
-                if self.image != nil {
-                    Image(uiImage: self.image!)
+                if self.image != UIImage() {
+                    Image(uiImage: self.image)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
