@@ -20,6 +20,7 @@ struct AddFixtureView: View {
     @State private var newFixtureQuantity: String = ""
     @State private var categoryPickerId: Int64 = 1
     @State private var unitPickerId: Int64 = 1
+    @State private var image: UIImage = UIImage()
     var body: some View {
         VStack {
             
@@ -39,7 +40,7 @@ struct AddFixtureView: View {
             .padding(.horizontal)
             
             HStack {
-                NewImageRow()
+                NewImageRow(image: self.$image)
             }
             .padding(.horizontal)
             
@@ -63,7 +64,7 @@ struct AddFixtureView: View {
             },
             trailing: Button(action: {
                 // 備品登録処理
-                DbManager().createFixture(cId: self.categoryPickerId, uId: self.unitPickerId, name: self.newFixtureName, quantity: Int64(self.newFixtureQuantity)!)
+                DbManager().createFixture(cId: self.categoryPickerId, uId: self.unitPickerId, name: self.newFixtureName, quantity: Int64(self.newFixtureQuantity)!, image: ImageConversion().imageToString(image: self.image))
             }) {
                 Text("保存")
                     .foregroundColor(Color.white)
@@ -181,7 +182,7 @@ struct NewFixtureQuantityRow: View {
 }
 // 画像行
 struct NewImageRow: View {
-    @State private var image: UIImage?
+    @Binding var image: UIImage
     @State private var showCameraView = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     var body: some View {
@@ -203,8 +204,8 @@ struct NewImageRow: View {
                     Text("ライブラリから画像を選択")
                 })
             } label: {
-                if self.image != nil {
-                    Image(uiImage: self.image!)
+                if self.image != UIImage() {
+                    Image(uiImage: self.image)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

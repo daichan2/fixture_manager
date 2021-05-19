@@ -15,4 +15,5 @@ class FixtureModel: Identifiable {
     public var quantity: Int64 = 0
     public var createdAt: String = ""
     public var updatedAt: String = ""
+    public var image: String = ""
 }

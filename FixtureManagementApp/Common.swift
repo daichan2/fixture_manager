@@ -161,7 +161,7 @@ struct UnitModalView: View {
 // カメラ、ライブラリー機能
 struct SwiftUIImagePicker: UIViewControllerRepresentable {
     // 画像保存
-    @Binding var image: UIImage?
+    @Binding var image: UIImage
     // カメラorライブラリー表示フラグ
     @Binding var showCameraView: Bool
     // カメラorライブラリーの選択肢
@@ -203,6 +203,35 @@ struct SwiftUIImagePicker: UIViewControllerRepresentable {
         
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
             self.parent.showCameraView = false
+        }
+    }
+}
+
+// 画像のデータ形式を変換
+class ImageConversion: NSObject {
+    // UIImage→String
+    func imageToString(image: UIImage) -> String {
+        if (image != UIImage()) {
+            // 画像をNSDataに変換
+            let data: NSData = image.pngData()! as NSData
+            // base64形式に変換
+            let imageString = data.base64EncodedString(options: .lineLength64Characters)
+            return imageString
+        } else {
+            return ""
+        }
+    }
+    
+    // String→UIImage
+    func stringToImage(imageString: String) -> UIImage {
+        if (!imageString.isEmpty) {
+            // base64をNSDataに変換
+            let imageData = NSData(base64Encoded: imageString, options: .ignoreUnknownCharacters)
+            // NSDataを画像に変換
+            let image: UIImage = UIImage(data: imageData! as Data)!
+            return image
+        } else {
+            return UIImage()
         }
     }
 }
