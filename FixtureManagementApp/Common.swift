@@ -104,6 +104,7 @@ struct UnitPicker: View {
 struct CategoryModalView: View {
     @Binding var isActive: Bool
     @Binding var name: String
+    @State var isAlertView: Bool = false
     var body: some View {
         TextField("カテゴリー名を入力してください", text: $name)
             .padding(.horizontal)
@@ -113,17 +114,27 @@ struct CategoryModalView: View {
                     .stroke(Color.black, lineWidth: 1)
             )
         HStack {
+            
             Button(action: {
-                // カテゴリー登録処理
-                DbManager().createCategory(name: self.name)
-                self.isActive.toggle()
+                if (Validation().validCategoryName(name: self.name)) {
+                    // カテゴリー登録処理
+                    DbManager().createCategory(name: self.name)
+                    self.isActive.toggle()
+                } else {
+                    self.isAlertView = true
+                }
             }) {
                 Text("作成")
             }
+            
             Button(action: {
                 self.isActive.toggle()
             }) {
                 Text("キャンセル")
+            }
+            
+            .alert(isPresented: self.$isAlertView) {
+                Alert(title: Text("カテゴリー名を入力してください"))
             }
         }
     }
@@ -133,6 +144,7 @@ struct CategoryModalView: View {
 struct UnitModalView: View {
     @Binding var isActive: Bool
     @Binding var name: String
+    @State var isAlertView: Bool = false
     var body: some View {
         TextField("単位名を入力してください", text: $name)
             .padding(.horizontal)
@@ -142,17 +154,27 @@ struct UnitModalView: View {
                     .stroke(Color.black, lineWidth: 1)
             )
         HStack {
+            
             Button(action: {
-                // 単位登録処理
-                DbManager().createUnit(name: self.name)
-                self.isActive.toggle()
+                if (Validation().validUnitName(name: self.name)) {
+                    // 単位登録処理
+                    DbManager().createUnit(name: self.name)
+                    self.isActive.toggle()
+                } else {
+                    self.isAlertView = true
+                }
             }) {
                 Text("作成")
             }
+            
             Button(action: {
                 self.isActive.toggle()
             }) {
                 Text("キャンセル")
+            }
+            
+            .alert(isPresented: self.$isAlertView) {
+                Alert(title: Text("単位名を入力してください"))
             }
         }
     }
@@ -233,5 +255,34 @@ class ImageConversion: NSObject {
         } else {
             return UIImage()
         }
+    }
+}
+
+// バリデーション
+class Validation {
+    // カテゴリー追加時のバリデーション
+    func validCategoryName(name: String) -> Bool {
+        if (name.isEmpty) { return false }
+        return true
+    }
+    
+    // 単位追加時のバリデーション
+    func validUnitName(name: String) -> Bool {
+        if (name.isEmpty) { return false }
+        return true
+    }
+    
+    // 備品登録時のバリデーション
+    func validSaveView(name: String, quantity: String) -> String {
+        var errorItem: String = ""
+        if (name.isEmpty) {
+            errorItem = "品名"
+            return errorItem
+        }
+        if (quantity.isEmpty) {
+            errorItem = "個数"
+            return errorItem
+        }
+        return ""
     }
 }
