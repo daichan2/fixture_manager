@@ -21,6 +21,8 @@ struct AddFixtureView: View {
     @State private var categoryPickerId: Int64 = 1
     @State private var unitPickerId: Int64 = 1
     @State private var image: UIImage = UIImage()
+    @State private var isAlertView: Bool = false
+    @State private var validateMessage: String = ""
     var body: some View {
         VStack {
             
@@ -63,12 +65,22 @@ struct AddFixtureView: View {
                     .foregroundColor(Color.white)
             },
             trailing: Button(action: {
-                // 備品登録処理
-                DbManager().createFixture(cId: self.categoryPickerId, uId: self.unitPickerId, name: self.newFixtureName, quantity: Int64(self.newFixtureQuantity)!, image: ImageConversion().imageToString(image: self.image))
+                // エラーメッセージを抽出
+                self.validateMessage = Validation().validSaveView(name: self.newFixtureName, quantity: self.newFixtureQuantity)
+                // エラー項目があるかチェック
+                if (self.validateMessage.isEmpty) {
+                    // 備品登録処理
+                    DbManager().createFixture(cId: self.categoryPickerId, uId: self.unitPickerId, name: self.newFixtureName, quantity: Int64(self.newFixtureQuantity)!, image: ImageConversion().imageToString(image: self.image))
+                } else {
+                    self.isAlertView = true
+                }
             }) {
                 Text("保存")
                     .foregroundColor(Color.white)
             })
+        .alert(isPresented: self.$isAlertView) {
+            Alert(title: Text("\(self.validateMessage)を入力してください"))
+        }
     }
 }
 
