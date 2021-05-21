@@ -23,11 +23,13 @@ struct AddFixtureView: View {
     @State private var image: UIImage = UIImage()
     @State private var isAlertView: Bool = false
     @State private var validateMessage: String = ""
+    @State private var categoryList: [CategoryModel] = []
+    @State private var unitList: [UnitModel] = []
     var body: some View {
         VStack {
             
             HStack {
-                NewCategoryRow(isShowing: self.$isShowingCategoryPicker, isActive: self.$isCategoryModalActive, categoryMessage: self.$newCategoryMessage)
+                NewCategoryRow(isShowing: self.$isShowingCategoryPicker, isActive: self.$isCategoryModalActive, categoryMessage: self.$newCategoryMessage, categoryList: self.$categoryList)
             }
             
             HStack {
@@ -37,7 +39,7 @@ struct AddFixtureView: View {
             
             HStack {
                 NewFixtureQuantityRow(isShowing: self.$isShowingUnitPicker,
-                                      isActive: $isUnitModalActive, quantity: self.$newFixtureQuantity, unitMessage: self.$newUnitMessage)
+                                      isActive: $isUnitModalActive, quantity: self.$newFixtureQuantity, unitMessage: self.$newUnitMessage, unitList: self.$unitList)
             }
             .padding(.horizontal)
             
@@ -47,10 +49,10 @@ struct AddFixtureView: View {
             .padding(.horizontal)
             
             ZStack {
-                CategoryPicker(selection: self.$categoryPickerId, isShowing: self.$isShowingCategoryPicker, cateroryMessage: self.$newCategoryMessage)
+                CategoryPicker(selection: self.$categoryPickerId, isShowing: self.$isShowingCategoryPicker, cateroryMessage: self.$newCategoryMessage, categoryList: self.$categoryList)
                     .animation(.linear)
                     .offset(y: self.isShowingCategoryPicker ? 0 : UIScreen.main.bounds.height)
-                UnitPicker(selection: self.$unitPickerId, isShowing: self.$isShowingUnitPicker, unitMessage: self.$newUnitMessage)
+                UnitPicker(selection: self.$unitPickerId, isShowing: self.$isShowingUnitPicker, unitMessage: self.$newUnitMessage, unitList: self.$unitList)
                     .animation(.linear)
                     .offset(y: self.isShowingUnitPicker ? 0 : UIScreen.main.bounds.height)
             }
@@ -95,6 +97,7 @@ struct NewCategoryRow: View {
     @Binding var isShowing: Bool
     @Binding var isActive: Bool
     @Binding var categoryMessage: String
+    @Binding var categoryList: [CategoryModel]
     @State private var categoryName = ""
     var body: some View {
         // カテゴリーを選択するドロップダウンリスト
@@ -123,7 +126,7 @@ struct NewCategoryRow: View {
                 .foregroundColor(Color.blue)
         }
         .sheet(isPresented: $isActive, content: {
-            CategoryModalView(isActive: $isActive, name: $categoryName)
+            CategoryModalView(isActive: $isActive, name: $categoryName, categoryLIst: $categoryList)
         })
         .padding(.top)
         Spacer()
@@ -150,6 +153,7 @@ struct NewFixtureQuantityRow: View {
     @Binding var isActive: Bool
     @Binding var quantity: String
     @Binding var unitMessage: String
+    @Binding var unitList: [UnitModel]
     @State private var unitName = ""
     var body: some View {
         // 個数を入力するテキストフォーム
@@ -186,7 +190,7 @@ struct NewFixtureQuantityRow: View {
                 .foregroundColor(Color.blue)
         }
         .sheet(isPresented: $isActive, content: {
-            UnitModalView(isActive: $isActive, name: $unitName)
+            UnitModalView(isActive: $isActive, name: $unitName, unitList: $unitList)
         })
         
         Spacer()

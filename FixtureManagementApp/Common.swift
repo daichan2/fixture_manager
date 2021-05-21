@@ -28,7 +28,7 @@ struct CategoryPicker: View {
     @Binding var selection: Int64
     @Binding var isShowing: Bool
     @Binding var cateroryMessage: String
-    @State var categoryList: [CategoryModel] = []
+    @Binding var categoryList: [CategoryModel]
     var body: some View {
         VStack {
             Spacer()
@@ -66,7 +66,7 @@ struct UnitPicker: View {
     @Binding var selection: Int64
     @Binding var isShowing: Bool
     @Binding var unitMessage: String
-    @State var unitList: [UnitModel] = []
+    @Binding var unitList: [UnitModel]
     var body: some View {
         VStack {
             Spacer()
@@ -104,6 +104,7 @@ struct UnitPicker: View {
 struct CategoryModalView: View {
     @Binding var isActive: Bool
     @Binding var name: String
+    @Binding var categoryLIst: [CategoryModel]
     @State var isAlertView: Bool = false
     var body: some View {
         TextField("カテゴリー名を入力してください", text: $name)
@@ -119,6 +120,8 @@ struct CategoryModalView: View {
                 if (Validation().validCategoryName(name: self.name)) {
                     // カテゴリー登録処理
                     DbManager().createCategory(name: self.name)
+                    // カテゴリー一覧を取得
+                    self.categoryLIst = DbManager().getCategoryList()
                     self.isActive.toggle()
                 } else {
                     self.isAlertView = true
@@ -144,6 +147,7 @@ struct CategoryModalView: View {
 struct UnitModalView: View {
     @Binding var isActive: Bool
     @Binding var name: String
+    @Binding var unitList: [UnitModel]
     @State var isAlertView: Bool = false
     var body: some View {
         TextField("単位名を入力してください", text: $name)
@@ -159,6 +163,8 @@ struct UnitModalView: View {
                 if (Validation().validUnitName(name: self.name)) {
                     // 単位登録処理
                     DbManager().createUnit(name: self.name)
+                    // 単位一覧を取得
+                    self.unitList = DbManager().getUnitList()
                     self.isActive.toggle()
                 } else {
                     self.isAlertView = true
